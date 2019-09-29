@@ -18,3 +18,5 @@ deploy:
   user: zhaofeng-shu33
   key: $BINTRAY
   skip_cleanup: true
+  on:
+    tag: true

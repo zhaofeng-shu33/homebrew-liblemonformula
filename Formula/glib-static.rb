@@ -1,14 +1,14 @@
 class GlibStatic < Formula
   desc "Core application library for C"
   homepage "https://developer.gnome.org/glib/"
-  url "https://mirrors.ustc.edu.cn/gnome/sources/glib/2.62/glib-2.62.0.tar.xz"
+  url "https://download.gnome.org/sources/glib/2.62/glib-2.62.0.tar.xz"
   sha256 "6c257205a0a343b662c9961a58bb4ba1f1e31c82f5c6b909ec741194abc3da10"
   revision 1
 
   bottle do
-    root_url "https://bintray.com/zhaofeng-shu33/homebrew-liblemonformula/glib-static/2.62.0"
+    root_url "https://dl.bintray.com/zhaofeng-shu33/homebrew-liblemonformula"
     sha256 "0838f7e494676d8be3a3668c60f86f1650c3bd7a7618ef9e8125df8b3c071363" => :high_sierra
-    sha256 "1cf482c5d2bdcf8650344ed4fe1f6cb7f30bee9fc73a93a6552f489313cda2ba" => :mojave
+    sha256 "b6fc1b0139738ba1669b50d58e1d38cd0040c5f6e561f1c159d753bcd3b82663" => :mojave
   end
 
   depends_on "meson" => :build
