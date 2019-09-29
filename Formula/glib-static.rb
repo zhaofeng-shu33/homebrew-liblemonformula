@@ -1,7 +1,7 @@
 class GlibStatic < Formula
   desc "Core application library for C"
   homepage "https://developer.gnome.org/glib/"
-  url "https://mirrors.ustc.edu.cn/gnome/sources/glib/2.62/glib-2.62.0.tar.xz"
+  url "https://download.gnome.org/sources/glib/2.62/glib-2.62.0.tar.xz"
   sha256 "6c257205a0a343b662c9961a58bb4ba1f1e31c82f5c6b909ec741194abc3da10"
   revision 1
 
@@ -38,7 +38,6 @@ class GlibStatic < Formula
       system "meson", "--default-library=static", "--prefix=#{prefix}", *args, ".."
       system "ninja", "-v"
       system "mkdir", "-p", "#{prefix}/lib"
-      system "ls"
       system "cp", "./glib/libglib-2.0.a", "#{prefix}/lib/"
     end
 
