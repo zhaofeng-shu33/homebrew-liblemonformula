@@ -11,7 +11,7 @@ script:
   - brew bottle glib-static
   - mv glib-static--2.62.0_1.mojave.bottle.1.tar.gz glib-static-2.62.0_1.mojave.bottle.1.tar.gz
 deploy:
-  provider: bintry
+  provider: bintray
   file: description.json
   user: zhaofeng-shu33
   key: $BINTRAY
