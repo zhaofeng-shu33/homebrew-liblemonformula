@@ -2,7 +2,7 @@ matrix:
   include:
     - if: branch = master
       os: osx
-      env: DIST=high_sierra
+      env: DIST=mojave
       osx_image: xcode10.3
       addons:
          homebrew:
