@@ -6,7 +6,7 @@ matrix:
          homebrew:
              taps: zhaofeng-shu33/liblemonformula
 script:
-  - brew uninstall glib
+  - brew uninstall --ignore-dependencies glib
   - brew install --build-bottle glib-static
   - brew bottle glib-static
   - mv glib-static--2.62.0_1.mojave.bottle.1.tar.gz glib-static-2.62.0_1.mojave.bottle.1.tar.gz
