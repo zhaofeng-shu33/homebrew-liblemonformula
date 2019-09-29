@@ -5,12 +5,6 @@ class GlibStatic < Formula
   sha256 "6c257205a0a343b662c9961a58bb4ba1f1e31c82f5c6b909ec741194abc3da10"
   revision 1
 
-  bottle do
-    root_url "https://dl.bintray.com/zhaofeng-shu33/homebrew-liblemonformula"
-    sha256 "0838f7e494676d8be3a3668c60f86f1650c3bd7a7618ef9e8125df8b3c071363" => :high_sierra
-    sha256 "b6fc1b0139738ba1669b50d58e1d38cd0040c5f6e561f1c159d753bcd3b82663" => :mojave
-  end
-
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
@@ -36,7 +30,6 @@ class GlibStatic < Formula
     # Disable dtrace; see https://trac.macports.org/ticket/30413
     args = %W[
       -Diconv=auto
-      -Dgio_module_dir=#{HOMEBREW_PREFIX}/lib/gio/modules
       -Dbsymbolic_functions=false
       -Ddtrace=false
     ]
@@ -44,34 +37,12 @@ class GlibStatic < Formula
     mkdir "build" do
       system "meson", "--default-library=static", "--prefix=#{prefix}", *args, ".."
       system "ninja", "-v"
-      system "ninja", "install", "-v"
+      system "mkdir", "-p", "#{prefix}/lib"
+      system "cp", "glib/*.a", "#{prefix}/lib/"
     end
 
-    # ensure giomoduledir contains prefix, as this pkgconfig variable will be
-    # used by glib-networking and glib-openssl to determine where to install
-    # their modules
-    inreplace lib/"pkgconfig/gio-2.0.pc",
-              "giomoduledir=#{HOMEBREW_PREFIX}/lib/gio/modules",
-              "giomoduledir=${libdir}/gio/modules"
-
-    # `pkg-config --libs glib-2.0` includes -lintl, and gettext itself does not
-    # have a pkgconfig file, so we add gettext lib and include paths here.
-    gettext = Formula["gettext"].opt_prefix
-    inreplace lib+"pkgconfig/glib-2.0.pc" do |s|
-      s.gsub! "Libs: -lintl -L${libdir} -lglib-2.0",
-              "Libs: -L${libdir} -lglib-2.0 -L#{gettext}/lib -lintl"
-      s.gsub! "Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include",
-              "Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include -I#{gettext}/include"
-    end
-
-    # `pkg-config --print-requires-private gobject-2.0` includes libffi,
-    # but that package is keg-only so it needs to look for the pkgconfig file
-    # in libffi's opt path.
   end
 
-  def post_install
-    (HOMEBREW_PREFIX/"lib/gio/modules").mkpath
-  end
 
   test do
     (testpath/"test.c").write <<~EOS
