@@ -6,8 +6,9 @@ class GlibStatic < Formula
   revision 1
 
   bottle do
-    root_url "https://github.com/zhaofeng-shu33/homebrew-liblemonformula/releases/download/v1.0"
+    root_url "https://bintray.com/zhaofeng-shu33/homebrew-liblemonformula/glib-static/2.62.0"
     sha256 "0838f7e494676d8be3a3668c60f86f1650c3bd7a7618ef9e8125df8b3c071363" => :high_sierra
+    sha256 "1cf482c5d2bdcf8650344ed4fe1f6cb7f30bee9fc73a93a6552f489313cda2ba" => :mojave
   end
 
   depends_on "meson" => :build
