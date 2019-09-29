@@ -17,7 +17,6 @@ class GlibStatic < Formula
   depends_on "libffi"
   depends_on "pcre"
   depends_on "python"
-  uses_from_macos "util-linux" # for libmount.so
 
   patch :DATA
 
