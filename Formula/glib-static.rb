@@ -38,7 +38,8 @@ class GlibStatic < Formula
       system "meson", "--default-library=static", "--prefix=#{prefix}", *args, ".."
       system "ninja", "-v"
       system "mkdir", "-p", "#{prefix}/lib"
-      system "cp", "glib/*.a", "#{prefix}/lib/"
+      system "ls"
+      system "cp", "./glib/libglib-2.0.a", "#{prefix}/lib/"
     end
 
   end

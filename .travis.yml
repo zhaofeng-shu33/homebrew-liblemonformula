@@ -2,15 +2,23 @@ matrix:
   include:
     - if: branch = master
       os: osx
+      env: DIST=high_sierra
       osx_image: xcode10.3
       addons:
          homebrew:
              taps: zhaofeng-shu33/liblemonformula
-
+    - if: branch = master
+      os: osx
+      env: DIST=high_sierra
+      osx_image: xcode9.4
+      addons:
+         homebrew:
+             update: true
+             taps: zhaofeng-shu33/liblemonformula
 script:
   - brew install --build-bottle glib-static
   - brew bottle glib-static
-  - mkdir -p dist && mv glib-static--2.62.0_1.mojave.bottle.1.tar.gz dist/glib-static-2.62.0_1.mojave.bottle.tar.gz
+  - mkdir -p dist && mv glib-static--2.62.0_1.$DIST.bottle.1.tar.gz dist/glib-static-2.62.0_1.$DIST.bottle.tar.gz
 
 deploy:
   provider: bintray
