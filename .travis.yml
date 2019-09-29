@@ -6,7 +6,13 @@ matrix:
          homebrew:
              taps: zhaofeng-shu33/liblemonformula
 script:
+  - brew uninstall glib
   - brew install --build-bottle glib-static
   - brew bottle glib-static
-  - ls
-
+  - mv glib-static--2.62.0_1.mojave.bottle.1.tar.gz glib-static-2.62.0_1.mojave.bottle.1.tar.gz
+deploy:
+  provider: bintry
+  file: description.json
+  user: zhaofeng-shu33
+  key: $BINTRAY
+  skip_cleanup: true

@@ -1,0 +1,14 @@
+{
+  "package": {
+    "name": "glib-static",
+    "repo": "homebrew-liblemonformula",
+    "subject": "zhaofeng-shu33",
+    "vcs_url": "https://github.com/zhaofeng-shu33/homebrew-liblemonformula",
+    "licenses": "MIT"
+  },
+  "version": {
+    "name": "2.62.0"
+  },
+  "files": ["includePattern": "*.tar.gz"],
+  "publish": true
+}
