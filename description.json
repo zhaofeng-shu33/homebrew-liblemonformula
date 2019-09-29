@@ -9,6 +9,6 @@
   "version": {
     "name": "2.62.0"
   },
-  "files": [{"includePattern": "*.tar.gz"}],
+  "files": [{"includePattern": "dist/(.*)", "uploadPattern": "$1"}],
   "publish": true
 }
