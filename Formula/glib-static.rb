@@ -5,6 +5,11 @@ class GlibStatic < Formula
   sha256 "6c257205a0a343b662c9961a58bb4ba1f1e31c82f5c6b909ec741194abc3da10"
   revision 1
 
+  bottle do
+    root_url "https://github.com/zhaofeng-shu33/homebrew-liblemonformula/releases/download/v1.0"
+    sha256 "0838f7e494676d8be3a3668c60f86f1650c3bd7a7618ef9e8125df8b3c071363" => :high_sierra
+  end
+
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
