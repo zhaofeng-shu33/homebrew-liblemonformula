@@ -4,7 +4,13 @@ class GlibStatic < Formula
   url "https://download.gnome.org/sources/glib/2.62/glib-2.62.0.tar.xz"
   sha256 "6c257205a0a343b662c9961a58bb4ba1f1e31c82f5c6b909ec741194abc3da10"
   revision 1
-
+  
+  bottle do
+    root_url "https://dl.bintray.com/zhaofeng-shu33/homebrew-liblemonformula"
+    sha256 "1f339d586b053f20d6a81fb9d7126fe5156bc24cbc1686e153f8aa74b957f809" => :mojave
+    sha256 "a7a80b99cd02e9fc78696332d58503fc3d8b4747412b65813c7a0be244685f78" => :high_sierra
+  end
+  
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build

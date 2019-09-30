@@ -28,4 +28,4 @@ deploy:
   key: $BINTRAY
   skip_cleanup: true
   on:
-    tag: true
+    tags: true
