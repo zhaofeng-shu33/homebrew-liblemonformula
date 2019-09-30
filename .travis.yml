@@ -18,7 +18,7 @@ matrix:
 script:
   - brew install --build-bottle glib-static
   - brew bottle glib-static
-  - mkdir -p dist && mv glib-static--2.62.0_1.$DIST.bottle.1.tar.gz dist/glib-static-2.62.0_1.$DIST.bottle.tar.gz
+  - mkdir -p dist && mv glib-static--2.62.0_1.$DIST.bottle.tar.gz dist/glib-static-2.62.0_1.$DIST.bottle.tar.gz
 
 deploy:
   provider: bintray
